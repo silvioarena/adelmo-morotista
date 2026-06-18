@@ -375,8 +375,7 @@ footer p {
   width: 170px;
   height: 58px;
   overflow: hidden;
-  border-radius: 8px;
-  background: #ffffff;
+  background: transparent;
 }
 
 .developer-logo img {
