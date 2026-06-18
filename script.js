@@ -39,4 +39,5 @@ Quantidade de pessoas: ${pessoas}`;
 
   const whatsappUrl = `https://wa.me/${ownerWhatsAppNumber}?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, "_blank", "noopener");
+  travelForm.reset();
 });
