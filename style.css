@@ -40,9 +40,10 @@ a {
 
 .nav {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   width: min(1120px, 100%);
+  min-height: 116px;
   margin: 0 auto;
 }
 
@@ -54,15 +55,17 @@ a {
 
 .brand img {
   display: block;
-  width: 300px;
-  max-width: 42vw;
-  height: 128px;
+  width: 440px;
+  max-width: 44vw;
+  height: 116px;
   object-fit: contain;
+  object-position: left top;
 }
 
 .nav-links {
   display: flex;
   gap: 22px;
+  padding-top: 18px;
   font-size: 0.95rem;
 }
 
@@ -341,9 +344,9 @@ footer p {
   }
 
   .brand img {
-    width: 220px;
+    width: 260px;
     max-width: 70vw;
-    height: 94px;
+    height: 110px;
   }
 
   .nav-links {
