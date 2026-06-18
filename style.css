@@ -47,8 +47,17 @@ a {
 }
 
 .brand {
-  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
+}
+
+.brand img {
+  display: block;
+  width: 128px;
+  max-width: 36vw;
+  height: 54px;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -329,6 +338,11 @@ footer p {
     align-items: flex-start;
     gap: 18px;
     flex-direction: column;
+  }
+
+  .brand img {
+    width: 112px;
+    height: 48px;
   }
 
   .nav-links {
