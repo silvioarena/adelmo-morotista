@@ -18,6 +18,17 @@ travelForm.addEventListener("submit", (event) => {
   const horario = formData.get("horario");
   const pessoas = formData.get("pessoas");
 
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "form_whatsapp",
+    form_name: "solicitacao_viagem_executiva",
+    nome,
+    telefone,
+    destino,
+    horario,
+    quantidade_pessoas: pessoas,
+  });
+
   const message = `Olá! Gostaria de solicitar uma viagem executiva.
 
 Nome: ${nome}
