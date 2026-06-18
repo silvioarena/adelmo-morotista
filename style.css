@@ -43,7 +43,7 @@ a {
   align-items: flex-start;
   justify-content: space-between;
   width: min(1120px, 100%);
-  min-height: 116px;
+  min-height: 170px;
   margin: 0 auto;
 }
 
@@ -55,9 +55,9 @@ a {
 
 .brand img {
   display: block;
-  width: 440px;
-  max-width: 44vw;
-  height: 116px;
+  width: 720px;
+  max-width: 54vw;
+  height: 170px;
   object-fit: contain;
   object-position: left top;
 }
@@ -344,9 +344,9 @@ footer p {
   }
 
   .brand img {
-    width: 260px;
-    max-width: 70vw;
-    height: 110px;
+    width: 340px;
+    max-width: 82vw;
+    height: 140px;
   }
 
   .nav-links {
