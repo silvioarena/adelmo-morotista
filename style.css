@@ -370,11 +370,14 @@ footer p {
   font-size: 0.88rem;
 }
 
-.developer-credit img {
+.developer-logo {
   display: block;
-  width: 128px;
-  height: 44px;
-  object-fit: contain;
+  width: 150px;
+  height: 48px;
+  background-image: url("image/SArena.png");
+  background-repeat: no-repeat;
+  background-position: center 45%;
+  background-size: 235px auto;
 }
 
 @media (max-width: 900px) {
