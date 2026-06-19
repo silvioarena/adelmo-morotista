@@ -79,17 +79,24 @@
 
           <label for="destino">
             Destino
-            <input type="text" id="destino" name="destino" required>
+            <input type="text" id="destino" name="destino">
           </label>
 
           <label for="horario">
             Horário
-            <input type="text" id="horario" name="horario" placeholder="Ex: 14:30" required>
+            <input
+              type="text"
+              id="horario"
+              name="horario"
+              inputmode="numeric"
+              maxlength="5"
+              placeholder="Ex: 14:30"
+            >
           </label>
 
           <label for="pessoas">
             Quantidade de pessoas
-            <input type="number" id="pessoas" name="pessoas" min="1" required>
+            <input type="number" id="pessoas" name="pessoas" min="1">
           </label>
 
           <div id="campaign-fields" aria-hidden="true"></div>

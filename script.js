@@ -4,6 +4,7 @@ const googleSheetEndpoint =
 const buttons = document.querySelectorAll(".button");
 const travelForm = document.querySelector("#travel-form");
 const campaignFields = document.querySelector("#campaign-fields");
+const horarioInput = document.querySelector("#horario");
 const campaignStorageKey = "adelmo_motorista_campaign_params";
 const clickIdParams = ["gclid", "gbraid", "wbraid", "fbclid"];
 
@@ -79,6 +80,16 @@ function formatCampaignParams(campaignParams) {
     .join("\n");
 }
 
+function formatTimeInput(value) {
+  const digits = value.replace(/\D/g, "").slice(0, 4);
+
+  if (digits.length <= 2) {
+    return digits;
+  }
+
+  return `${digits.slice(0, 2)}:${digits.slice(2)}`;
+}
+
 function sendLeadToSheet(leadData) {
   return fetch(googleSheetEndpoint, {
     method: "POST",
@@ -97,6 +108,10 @@ buttons.forEach((button) => {
   button.addEventListener("click", () => {
     console.log("Solicitacao de viagem iniciada pelo site Adelmo Motorista.");
   });
+});
+
+horarioInput.addEventListener("input", () => {
+  horarioInput.value = formatTimeInput(horarioInput.value);
 });
 
 getCurrentCampaignParams();
@@ -136,9 +151,9 @@ travelForm.addEventListener("submit", (event) => {
 
 Nome: ${nome}
 Telefone: ${telefone}
-Destino: ${destino}
-Horário: ${horario}
-Quantidade de pessoas: ${pessoas}${campaignMessage ? `\n\nDados da campanha:\n${campaignMessage}` : ""}`;
+Destino: ${destino || "Não informado"}
+Horário: ${horario || "Não informado"}
+Quantidade de pessoas: ${pessoas || "Não informado"}${campaignMessage ? `\n\nDados da campanha:\n${campaignMessage}` : ""}`;
 
   const whatsappUrl = `https://wa.me/${ownerWhatsAppNumber}?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, "_blank", "noopener");
