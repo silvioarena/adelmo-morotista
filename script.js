@@ -1,4 +1,4 @@
-const ownerWhatsAppNumber = "5599999999999";
+const ownerWhatsAppNumber = "5511995698209";
 const googleSheetEndpoint =
   "https://script.google.com/macros/s/AKfycbzjWVqofwlFHCz4cqgLz5K0VPf5HiVzkdTdZWgeYVy7-AUKvDG38OiitpI6_ePZgQk/exec";
 const buttons = document.querySelectorAll(".button");
