@@ -386,6 +386,38 @@ footer p {
   transform: translateY(-55px);
 }
 
+.floating-cta {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 14px 22px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: var(--brand);
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition: opacity 180ms ease, transform 180ms ease, background 160ms ease;
+}
+
+.floating-cta:hover {
+  background: var(--brand-dark);
+}
+
+.floating-cta.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
 @media (max-width: 900px) {
   .service-grid,
   .cards {
@@ -456,5 +488,12 @@ footer p {
 
   .contact-form {
     padding: 22px;
+  }
+
+  .floating-cta {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    width: auto;
   }
 }

@@ -5,6 +5,8 @@ const buttons = document.querySelectorAll(".button");
 const travelForm = document.querySelector("#travel-form");
 const campaignFields = document.querySelector("#campaign-fields");
 const horarioInput = document.querySelector("#horario");
+const floatingCta = document.querySelector(".floating-cta");
+const fourthSection = document.querySelector("#vantagens");
 const campaignStorageKey = "adelmo_motorista_campaign_params";
 const clickIdParams = ["gclid", "gbraid", "wbraid", "fbclid"];
 
@@ -90,6 +92,11 @@ function formatTimeInput(value) {
   return `${digits.slice(0, 2)}:${digits.slice(2)}`;
 }
 
+function updateFloatingCta() {
+  const shouldShow = window.scrollY >= fourthSection.offsetTop - 16;
+  floatingCta.classList.toggle("is-visible", shouldShow);
+}
+
 function sendLeadToSheet(leadData) {
   return fetch(googleSheetEndpoint, {
     method: "POST",
@@ -113,6 +120,10 @@ buttons.forEach((button) => {
 horarioInput.addEventListener("input", () => {
   horarioInput.value = formatTimeInput(horarioInput.value);
 });
+
+window.addEventListener("scroll", updateFloatingCta, { passive: true });
+window.addEventListener("resize", updateFloatingCta);
+updateFloatingCta();
 
 getCurrentCampaignParams();
 
