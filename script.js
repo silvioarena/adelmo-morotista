@@ -10,6 +10,14 @@ const fourthSection = document.querySelector("#vantagens");
 const campaignStorageKey = "adelmo_motorista_campaign_params";
 const clickIdParams = ["gclid", "gbraid", "wbraid", "fbclid"];
 
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+window.addEventListener("load", () => {
+  window.scrollTo(0, 0);
+});
+
 function getCampaignParamsFromUrl() {
   const searchParams = new URLSearchParams(window.location.search);
   const campaignParams = {};
