@@ -147,7 +147,6 @@ travelForm.addEventListener("submit", (event) => {
   const horario = formData.get("horario");
   const pessoas = formData.get("pessoas");
   const latestCampaignParams = getCurrentCampaignParams();
-  const campaignMessage = formatCampaignParams(latestCampaignParams);
   const leadData = {
     nome,
     telefone,
@@ -174,7 +173,7 @@ Nome: ${nome}
 Telefone: ${telefone}
 Destino: ${destino || "Não informado"}
 Horário: ${horario || "Não informado"}
-Quantidade de pessoas: ${pessoas || "Não informado"}${campaignMessage ? `\n\nDados da campanha:\n${campaignMessage}` : ""}`;
+Quantidade de pessoas: ${pessoas || "Não informado"}`;
 
   const whatsappUrl = `https://wa.me/${ownerWhatsAppNumber}?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, "_blank", "noopener");
