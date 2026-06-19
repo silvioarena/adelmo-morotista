@@ -1,4 +1,6 @@
 const ownerWhatsAppNumber = "5599999999999";
+const googleSheetEndpoint =
+  "https://script.google.com/macros/s/AKfycbzjWVqofwlFHCz4cqgLz5K0VPf5HiVzkdTdZWgeYVy7-AUKvDG38OiitpI6_ePZgQk/exec";
 const buttons = document.querySelectorAll(".button");
 const travelForm = document.querySelector("#travel-form");
 const campaignFields = document.querySelector("#campaign-fields");
@@ -77,6 +79,20 @@ function formatCampaignParams(campaignParams) {
     .join("\n");
 }
 
+function sendLeadToSheet(leadData) {
+  return fetch(googleSheetEndpoint, {
+    method: "POST",
+    mode: "no-cors",
+    keepalive: true,
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
+    body: JSON.stringify(leadData),
+  }).catch((error) => {
+    console.error("Nao foi possivel enviar o lead para a planilha.", error);
+  });
+}
+
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     console.log("Solicitacao de viagem iniciada pelo site Adelmo Motorista.");
@@ -96,18 +112,25 @@ travelForm.addEventListener("submit", (event) => {
   const pessoas = formData.get("pessoas");
   const latestCampaignParams = getCurrentCampaignParams();
   const campaignMessage = formatCampaignParams(latestCampaignParams);
-
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "form_whatsapp",
-    form_name: "solicitacao_viagem_executiva",
+  const leadData = {
     nome,
     telefone,
     destino,
     horario,
     quantidade_pessoas: pessoas,
+    page_url: window.location.href,
+    ...latestCampaignParams,
+  };
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "form_whatsapp",
+    form_name: "solicitacao_viagem_executiva",
+    ...leadData,
     campaign_params: latestCampaignParams,
   });
+
+  sendLeadToSheet(leadData);
 
   const message = `Olá! Gostaria de solicitar uma viagem executiva.
 
